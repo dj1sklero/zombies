@@ -8,8 +8,13 @@ import java.sql.SQLException;
 
 public class MySQL {
 
+    private final Zombies plugin;
+
     Connection connection;
 
+    public MySQL(Zombies plugin) {
+        this.plugin = plugin;
+    }
 
     public void openConnection() {
         try {
@@ -29,6 +34,7 @@ public class MySQL {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException e) {
@@ -36,9 +42,10 @@ public class MySQL {
             }
             try {
                 System.out.println("probuje laczyc");
-                connection = DriverManager.getConnection("jdbc:mysql://" + this.plugin.host + ":" + this.plugin.port + "/" + this.plugin.database + "?useSSL=false", this.plugin.username, this.plugin.password );
+                connection = DriverManager.getConnection("jdbc:mysql://" + this.plugin.host + ":" + this.plugin.port + "/" + this.plugin.database + "?useSSL=false", this.plugin.username, this.plugin.password);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
+}
