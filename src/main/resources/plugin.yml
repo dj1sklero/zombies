@@ -1,0 +1,6 @@
+name: Zombies
+version: ${project.version}
+main: pl.dj1sklero.zombies.Zombies
+api-version: 1.13
+authors: [dj1sklero, rex89m]
+description: The Minecraft plugin
