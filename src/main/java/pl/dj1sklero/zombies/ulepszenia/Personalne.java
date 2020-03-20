@@ -39,7 +39,7 @@ public class Personalne {
         inv.setItem(3, survival);
         inv.setItem(5, creative);
 
-    player.openInvectory(inv)
+    player.openInvectory(inv);
     }
 
 
