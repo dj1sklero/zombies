@@ -42,7 +42,7 @@ public class MySQL {
             }
             try {
                 System.out.println("probuje laczyc");
-                connection = DriverManager.getConnection("jdbc:mysql://" + this.plugin.host + ":" + this.plugin.port + "/" + this.plugin.database + "?useSSL=false", this.plugin.username, this.plugin.password);
+                connection = DriverManager.getConnection("jdbc:mysql://" + this.plugin.configPLG.yamlConfig.getString("host") + ":" + this.plugin.configPLG.yamlConfig.getString("port") + "/" + this.plugin.configPLG.yamlConfig.getString("database") + "?useSSL=false", this.plugin.configPLG.yamlConfig.getString("user"), this.plugin.configPLG.yamlConfig.getString("password"));
             } catch (SQLException e) {
                 e.printStackTrace();
             }

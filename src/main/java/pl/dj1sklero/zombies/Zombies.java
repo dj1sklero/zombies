@@ -6,15 +6,11 @@ import pl.dj1sklero.zombies.config.MySQL;
 import pl.dj1sklero.zombies.ulepszenia.Personalne;
 
 public final class Zombies extends JavaPlugin {
-
-    private static Zombies inst;
-    public static Zombies getInst() {
-        return inst;
-    }
-
     public final ConfigPLG configPLG;
     public final MySQL mySQL;
     public final Personalne Personalne;
+
+
 
 
     public Zombies(){

@@ -15,19 +15,8 @@ public class ConfigPLG {
         this.plugin = plugin;
     }
 
-    private static Configuration configuration;
-    public static String MYSQL_HOST;
-    public static int MYSQL_PORT;
-    public static String MYSQL_DATABASE;
-    public static String MYSQL_USER;
-    public static String MYSQL_PASS;
-
-
-
-
-
-    private File configFile;
-    private YamlConfiguration yamlConfig;
+    public File configFile;
+    public YamlConfiguration yamlConfig;
 
     public void ConfigManager(Zombies plugin, String filename) {
         this.plugin = plugin;
@@ -40,30 +29,25 @@ public class ConfigPLG {
         this.yamlConfig = YamlConfiguration.loadConfiguration(configFile);
     }
 
-    private void saveDefaultConfiguration() {
+        private void saveDefaultConfiguration() {
         // Add code for copying contents of myConfig.yml here.
         try {
             InputStream input = plugin.getResource(configFile.getName());
 
             // Output file MUST NOT EXIST! If it does, an IOException is thrown
-            java.nio.file.Files.copy(input, configFile.toPath());
+          //  java.nio.file.Files.copy(input, configFile.toPath());
+
+            yamlConfig.addDefault("host","localhost");
+            yamlConfig.addDefault("port","3306");
+            yamlConfig.addDefault("database","database");
+            yamlConfig.addDefault("user","root");
+            yamlConfig.addDefault("password","");
+            yamlConfig.save(configFile);
+
         } catch(IOException e) {
             // Send an error message, etc.
         }
     }
 
-    public YamlConfiguration getConfig() {
-        return this.yamlConfig;
-    }
-
-
-
-    public static void loadSettings() {
-        MYSQL_HOST = configuration.getString("settings.mysql.host");
-        MYSQL_PORT = configuration.getInt("settings.mysql.port");
-        MYSQL_DATABASE = configuration.getString("settings.mysql.database");
-        MYSQL_USER = configuration.getString("settings.mysql.user");
-        MYSQL_PASS = configuration.getString("settings.mysql.password");
-    }
 
 }
